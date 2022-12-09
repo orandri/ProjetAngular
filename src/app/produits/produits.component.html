@@ -1,0 +1,33 @@
+<h1>{{ titrePageModifie }}</h1>
+<div class="card-group">
+    <div class="card" *ngFor="let produit of produits">
+      <img class="img-thumbnail" src="{{ produit.img }}" alt="Card image cap">
+      <div class="card-body">
+        <h4 class="card-title">{{ produit.nom }}</h4>
+          <h5>Specifications</h5>
+          <li class="card-text">Couleur : {{ produit.spec.couleur }}</li>
+          <li class="card-text">Poids : {{ produit.spec.poids }}</li>
+          <li class="card-text">Stockage : {{ produit.spec.stockage }}</li>
+          <li class="card-text">Prix : {{ produit.spec.prix }}€</li>
+          <a  class="btn btn-primary" (mouseover)="modifTitreOver(produit)" (mouseleave)="modifTitreOut()" (click)="addToCart(produit)">Add to cart</a>
+      </div>
+    </div>
+
+<!--
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="card" *ngFor="let produit of produits">
+        <div class="card-body">
+       
+          <h4 class="card-title">{{ produit.nom }}</h4>
+          <h5>Specifications</h5>
+          <p class="card-text">Couleur : {{ produit.spec.couleur }}</p>
+          <p class="card-text">Poids : {{ produit.spec.poids }}</p>
+          <p class="card-text">Stockage : {{ produit.spec.stockage }}</p>
+          <p class="card-text">Prix : {{ produit.spec.prix }}</p>
+          <a  class="btn btn-primary">Add to cart</a>
+        </div>
+      </div>
+    </div>
+  </div> 
+  -->

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'myShop-app';
+  constructor(private router: Router) {
+  }
+  title = 'Lot of surprises are waiting for you'
+  goToCart() {
+    this.router.navigate(['/', 'Cart']);
+  }
+  goToProfile() {
+    this.router.navigate(['/', 'Profile']);
+  }
 }

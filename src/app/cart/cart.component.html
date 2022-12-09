@@ -1,0 +1,35 @@
+<div class="container" >
+  <h1> This is Cart Component </h1>
+  <h3> This is the content of Cart </h3>
+</div>
+
+<p *ngIf="isPanierVide == true "> {{ PhrasePanierVide }}</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Produit</th>
+        <th scope="col">Picture</th>
+        <th scope="col">Specifications</th>
+        <th scope="col">Quantite</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Modifier</th>
+      </tr>
+    </thead>
+    <tbody  *ngFor="let item of ProduitsDansPanier">
+      <tr>
+        <th scope="row">1</th>
+        <td>{{ item.nom }}</td>
+        <td><img src ="{{item.img}}"></td>
+        <td>
+          <li class="card-text">Couleur : {{ item.spec.couleur }}</li>
+          <li class="card-text">Poids : {{ item.spec.poids }}</li>
+          <li class="card-text">Stockage : {{ item.spec.stockage }}</li>
+          <li class="card-text">Prix : {{ item.spec.prix }}</li>
+        </td>
+        <td>{{item.quantite}}</td>
+        <td>{{item.prixTot}}</td>
+        <td><a  class="btn btn-primary" (click)="changeQuantite(item,1)">+</a><a  class="btn btn-primary"(click)="changeQuantite(item,-1)">-</a></td>
+      </tr>
+    </tbody>
+  </table>
