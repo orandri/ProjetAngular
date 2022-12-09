@@ -11,11 +11,15 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     console.log("Fonction :" +this.panierVide());
     console.log(this.panierVide());
-
+    console.log(this.nbProduit)
+    if (this.nbProduit == 0){
+      localStorage.removeItem("panier")
+    }
     // prixTotCart =
   }
 
 
+  nbProduit = this.NbProduit()
   prixTotPanier = this.prixTotalPanier()
   PhrasePanierVide = "Your cart is empty";
   ProduitsDansPanier = this.getCart();
@@ -23,6 +27,7 @@ export class CartComponent implements OnInit {
   isPanierVide = this.panierVide();
   
   
+
   panierVide(){
     let panier =  localStorage.getItem("panier");
     console.log(panier?.length)
@@ -63,6 +68,10 @@ export class CartComponent implements OnInit {
         }else{
           localStorage.setItem("panier",JSON.stringify(panier));
         }
+    }
+
+    if(this.nbProduit == 0){
+      localStorage.removeItem("panier")
     }
     window.location.reload();
 }
