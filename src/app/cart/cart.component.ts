@@ -10,12 +10,13 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("Fonction :" +this.panierVide());
-    console.log(this.ProduitsDansPanier[0].nom);
+    console.log(this.panierVide());
 
     // prixTotCart =
   }
 
 
+  prixTotPanier = this.prixTotalPanier()
   PhrasePanierVide = "Your cart is empty";
   ProduitsDansPanier = this.getCart();
  
@@ -24,7 +25,8 @@ export class CartComponent implements OnInit {
   
   panierVide(){
     let panier =  localStorage.getItem("panier");
-    if(panier == null){
+    console.log(panier?.length)
+    if(panier == null || panier.length == undefined){
       
       return true;
     }else{
@@ -62,6 +64,7 @@ export class CartComponent implements OnInit {
           localStorage.setItem("panier",JSON.stringify(panier));
         }
     }
+    window.location.reload();
 }
 
 
@@ -72,6 +75,15 @@ NbProduit(){
     nb += produit.quantite
   }
   return nb;
+}
+
+prixTotalPanier(){
+  let panier = this.getCart();
+  let prixTotPanier = 0
+  for (let produit of panier){
+    prixTotPanier+= produit.prixTot
+  }
+  return prixTotPanier
 }
 
 

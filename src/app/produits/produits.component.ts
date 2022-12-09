@@ -105,33 +105,6 @@ export class ProduitsComponent {
 
   }
 
-  removeProductCart(produit){
-    let panier = this.getCart();
-    panier = panier.filter( p => p.id != produit.id);
-    localStorage.setItem("panier",JSON.stringify(panier));
-  }
-   
-  changeQuantite(produit,quantite){
-    let panier = this.getCart();
-    let produitTrouve = panier.find(p => p.id == produit.id);
-
-    if (produitTrouve != undefined) {
-        produitTrouve.quantite += quantite;
-        if (produitTrouve.quantite <= 0) {
-          this.removeProductCart(produitTrouve);
-        }else{
-          localStorage.setItem("panier",JSON.stringify(panier));
-        }
-    }
-}
-
-NbProduit(){
-  let panier = this.getCart();
-  let nb = 0
-  for (let produit of panier){
-    nb += produit.quantite
-  }
-  return nb;
-}
+  
 
 }
